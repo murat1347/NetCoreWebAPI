@@ -19,12 +19,42 @@ namespace Murat.API.Migrations
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Murat.API.Data.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Elektronik"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Giyim"
+                        });
+                });
+
             modelBuilder.Entity("Murat.API.Data.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -43,13 +73,16 @@ namespace Murat.API.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Products");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2022, 2, 26, 15, 35, 29, 220, DateTimeKind.Local).AddTicks(248),
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2022, 2, 27, 15, 45, 39, 21, DateTimeKind.Local).AddTicks(3448),
                             Name = "Bilgisayar",
                             Price = 15000m,
                             Stock = 20
@@ -57,7 +90,8 @@ namespace Murat.API.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2022, 2, 26, 15, 35, 29, 220, DateTimeKind.Local).AddTicks(8074),
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2022, 2, 27, 15, 45, 39, 22, DateTimeKind.Local).AddTicks(6334),
                             Name = "Telefon",
                             Price = 18000m,
                             Stock = 20
@@ -65,11 +99,26 @@ namespace Murat.API.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2022, 2, 26, 15, 35, 29, 220, DateTimeKind.Local).AddTicks(8090),
+                            CategoryId = 1,
+                            CreatedDate = new DateTime(2022, 2, 27, 15, 45, 39, 22, DateTimeKind.Local).AddTicks(6362),
                             Name = "Klavye",
                             Price = 100m,
                             Stock = 20
                         });
+                });
+
+            modelBuilder.Entity("Murat.API.Data.Product", b =>
+                {
+                    b.HasOne("Murat.API.Data.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Murat.API.Data.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

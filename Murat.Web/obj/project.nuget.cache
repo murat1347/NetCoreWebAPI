@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "LzkhEjiK071mKQzp/SIoknkNbI0Mp4Rc+q5lH0vBj8iP1YS0nvuRj3tYQPJpk9Zd1y76vIbUQMiBoj8+6snbPw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Murat\\Desktop\\NetCoreWebAPI\\Murat.Web\\Murat.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Murat\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

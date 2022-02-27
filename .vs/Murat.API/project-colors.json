@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "553393eb-4ce5-4f33-a41c-c0e671034c5b": {
+      "ProjectGuid": "553393eb-4ce5-4f33-a41c-c0e671034c5b",
+      "DisplayName": "Murat.API",
+      "ColorIndex": 0
+    },
+    "84e84450-392d-47cb-9201-4a4c7c7ecae5": {
+      "ProjectGuid": "84e84450-392d-47cb-9201-4a4c7c7ecae5",
+      "DisplayName": "Murat.Web",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

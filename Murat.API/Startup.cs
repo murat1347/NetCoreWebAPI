@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Murat.API.Data;
 using Murat.API.Interfaces;
 using Murat.API.Repositories;
+using Newtonsoft.Json;
 
 namespace Murat.API
 {
@@ -34,7 +35,17 @@ namespace Murat.API
             {
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-            services.AddControllers();
+            services.AddCors(cors =>
+            {
+                cors.AddPolicy("UdemyCorsPolicy", opt =>
+                {
+                    opt.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                });
+            });
+            services.AddControllers().AddNewtonsoftJson(opt =>
+            {
+                opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Murat.API", Version = "v1" });
@@ -51,8 +62,9 @@ namespace Murat.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Murat.API v1"));
             }
 
+            app.UseStaticFiles();
             app.UseRouting();
-
+            app.UseCors("UdemyCorsPolicy");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

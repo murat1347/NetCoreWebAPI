@@ -1,0 +1,29 @@
+﻿@model List<Murat.API.ResponseModels.ProductResponseModel>
+<html>
+<head></head>
+<body>
+<p>Mvc Works</p>
+
+<p>@ViewBag.Reponsemessage</p>
+
+
+<a asp-action="Create" asp-controller="Home">New Product</a>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Stock</td>
+        </tr>
+    }
+</table>
+</body>
+</html>
