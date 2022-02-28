@@ -48,19 +48,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Murat\\.nuget\\packages\\": {}
+    "C:\\Users\\kodplus.dev1\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Murat\\Desktop\\NetCoreWebAPI\\Murat.Web\\Murat.Web.csproj",
+      "projectUniqueName": "C:\\Users\\kodplus.dev1\\Desktop\\NetCoreWebAPI\\Murat.Web\\Murat.Web.csproj",
       "projectName": "Murat.Web",
-      "projectPath": "C:\\Users\\Murat\\Desktop\\NetCoreWebAPI\\Murat.Web\\Murat.Web.csproj",
-      "packagesPath": "C:\\Users\\Murat\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Murat\\Desktop\\NetCoreWebAPI\\Murat.Web\\obj\\",
+      "projectPath": "C:\\Users\\kodplus.dev1\\Desktop\\NetCoreWebAPI\\Murat.Web\\Murat.Web.csproj",
+      "packagesPath": "C:\\Users\\kodplus.dev1\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kodplus.dev1\\Desktop\\NetCoreWebAPI\\Murat.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Murat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kodplus.dev1\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -109,7 +109,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,6 +26,7 @@ namespace Murat.API.Controllers
 
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -77,7 +79,7 @@ namespace Murat.API.Controllers
         }
 
         [HttpPost("upload")]
-        public async Task<IActionResult> Upload(IFormFile formFile)
+        public async Task<IActionResult> Upload([FromForm]IFormFile formFile)
         {
             var newName= Guid.NewGuid() +"."+ Path.GetExtension(formFile.FileName);
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", newName);
@@ -85,6 +87,6 @@ namespace Murat.API.Controllers
             await formFile.CopyToAsync(stream);
             return Created(string.Empty, formFile);
         }
-
+        
     }
 }

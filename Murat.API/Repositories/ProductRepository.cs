@@ -46,7 +46,7 @@ namespace Murat.API.Repositories
         {
             var removedEntity = await _context.Products.FindAsync(id);
             _context.Products.Remove(removedEntity);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }

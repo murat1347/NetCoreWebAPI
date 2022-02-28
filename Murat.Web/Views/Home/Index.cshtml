@@ -9,6 +9,7 @@
 
 <a asp-action="Create" asp-controller="Home">New Product</a>
 
+
 <table>
     <tr>
         <th>Name</th>
@@ -16,14 +17,25 @@
         <th>Stock</th>
 
     </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Name</td>
-            <td>@item.Price</td>
-            <td>@item.Stock</td>
-        </tr>
+    @{
+        if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                    <td>@item.Stock</td>
+                    <td>
+                        <a asp-action="Update" asp-controller="Home" asp-route-id="@item.Id">Update</a>
+                        <a asp-action="Remove" asp-controller="Home" asp-route-id="@item.Id">Remove</a>
+                    </td>
+                </tr>
+
+            }
+        }
     }
+   
 </table>
 </body>
 </html>

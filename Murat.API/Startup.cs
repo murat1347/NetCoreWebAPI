@@ -9,8 +9,11 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Murat.API.Data;
 using Murat.API.Interfaces;
 using Murat.API.Repositories;
@@ -30,6 +33,26 @@ namespace Murat.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+            {
+                opt.RequireHttpsMetadata = false;
+                opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidIssuer = "http://localhost",
+                    ValidAudience = "http://localhost",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Muratmuratmurat1.")),
+                    ValidateIssuerSigningKey = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero,
+                };
+
+            });
+
+
+
+
+
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddDbContext<ProductContext>(opt =>
             {
@@ -62,6 +85,7 @@ namespace Murat.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Murat.API v1"));
             }
 
+            app.UseAuthentication();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors("UdemyCorsPolicy");

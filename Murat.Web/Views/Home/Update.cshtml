@@ -2,13 +2,15 @@
 
 <html>
 <body>
+
 @{
     if (TempData["errorMessage"] != null)
     {
         <p style="color: red"> @TempData["errorMessage"]</p>
     }
 }
-<form asp-action="Create" asp-controller="Home" method="post">
+<form asp-action="Update" asp-controller="Home" method="post">
+    <input type="hidden" asp-for="@Model.Id"/>
     <label>Product Name:</label>
     <input type="text" asp-for="@Model.Name"/>
     <br/>
@@ -21,7 +23,7 @@
     <input asp-for="@Model.Stock"/>
     <br/>
     <hr/>
- 
+
     <div>
         <a asp-action="Index" asp-controller="Home">Return Index</a>
         <button type="submit">Submit</button>
